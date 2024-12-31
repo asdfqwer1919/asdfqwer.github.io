@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>にゃんこ</title>
+</head>
+
+<style>
+    html {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        background-color: #000000;
+        background-image: url("https://cdn.discordapp.com/attachments/1250452694317928471/1323289530597507144/IMG_2190.png?ex=6773f8e9&is=6772a769&hm=e6fdfc17c56397510d6c641f5e3d9214d177668547db9f202aff57ef6e4d8c8f&");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    #title {
+        background-color: #000000;
+        color: #ffbbaa;
+    }
+
+    input[type=button] {
+        -webkit-appearance: none;
+        color: #000000;
+        border-radius: 5px;
+        height: 23px;
+        background-color: #ffffff;
+        position: relative;
+        top: -2px;
+        border: 1px solid #ccbbaa;
+    }
+
+    span {
+        color: rgb(245, 229, 2);
+        background: -webkit-linear-gradient(-90deg, rgb(246, 248, 246), rgb(147, 143, 199));
+        font-weight: bold;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    summary {
+        color: rgb(217, 255, 0);
+        background: -webkit-linear-gradient(-90deg, rgb(246, 248, 246), rgb(147, 143, 199));
+        font-weight: bold;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #TabBar {
+        display: flex;
+        border-bottom: 1px solid #bbcc00;
+    }
+
+    .TabButton {
+        width: 19%;
+        padding: 1px 8px;
+        align-items: center;
+        justify-content: center;
+        background-color: #aabbcc;
+        color: #aabbcc;
+        font-size: 90%;
+        border-radius: 4px 4px 0px 0px;
+        margin-right: 1px;
+    }
+
+    .Tab {
+        display: none;
+
+    }
+
+    .scroll {
+        width: 400px;
+        height: 190px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+</style>
+<div id="title"><span>にゃんこ大戦争 chanelスクリプト</span></div>
+<div id="TabBer">
+    <span class="TabButton" onclick="changeTab('one')">メイン</span>
+    <span class="TabButton" onclick="changeTab('two')">解放系</span>
+    <span class="TabButton" onclick="changeTab('three')">色々</span>
+    <span class="TabButton" onclick="changeTab('four')">色々2</span>
+</div>
+
+<div class="Tab" id=Tab_one>
+    <div class="scroll">
+        <span>猫缶</span>
+        <input type="button" value="変更" onclick="SetCatCan()">
+        <br>
+        <span>XP</span>
+        <input type="button" value="変更" onclick="SetXP()">
+        <br>
+        <span>NP</span>
+        <input type="button" value="変更" onclick="SetNP()">
+        <br>
+        <span>敵城固定ON</span>
+        <input type="checkbox" onclick="FreezeEnemyBaseHealth(this)" />
+        <span>敵城HP</span>
+        <input type="button" value="変更" onclick="SetEnemyBaseHealth()">
+        <br>
+        <span>味方の城HP</span>
+        <input type="button" value="変更" onclick="SetMyBaseHealth()">
+        <br>
+        <details>
+            <summary>チケット</summary>
+            <span>にゃんチケ</span>
+            <input type="button" value="変更" onclick="SetCatTicket()">
+            <br>
+            <span>レアチケ</span>
+            <input type="button" value="変更" onclick="SetRareTicket()">
+            <br>
+            <span>プラチケ</span>
+            <input type="button" value="変更" onclick="SetPlatinumTicket()">
+            <br>
+            <span>レジェチケ</span>
+            <input type="button" value="変更" onclick="SetLegendTicket()">
+            <br>
+            <span>全て一括</span>
+            <input type="button" value="変更" onclick="SetAllTicket()">
+            <br>
+        </details>
+        <span>広告非表示</span>
+        <input type="button" value="変更" onclick="RemoveAdd()">
+        <br>
+    </div>
+</div>
+
+<div class="Tab" id=Tab_two>
+    <div class="scroll">
+        <span>ステ解放</span>
+        <input type="button" value="変更" onclick="AllStageUnlock()">
+        <br>
+        <span>ステクリお宝一括解放</span>
+        <input type="button" value="変更" onclick="AllStageUnlock1()">
+        <br>
+        <details>
+            <summary>クリア回数</summary>
+            <span>日本1</span>
+            <input type="button" value="変更" onclick="CleaR()">
+            <br>
+            <span>日本2</span>
+            <input type="button" value="変更" onclick="CleaR2()">
+            <br>
+            <span>日本3</span>
+            <input type="button" value="変更" onclick="CleaR3()">
+            <br>
+            <span>未来1</span>
+            <input type="button" value="変更" onclick="CleaR4()">
+            <br>
+            <span>未来2</span>
+            <input type="button" value="変更" onclick="CleaR5()">
+            <br>
+            <span>未来3</span>
+            <input type="button" value="変更" onclick="CleaR6()">
+            <br>
+            <span>宇宙1</span>
+            <input type="button" value="変更" onclick="CleaR7()">
+            <br>
+            <span>宇宙2</span>
+            <input type="button" value="変更" onclick="CleaR8()">
+            <br>
+            <span>宇宙3</span>
+            <input type="button" value="変更" onclick="CleaR9()">
+            <br>
+        </details>
+        <details>
+            <summary>お宝解放</summary>
+            <span>日本1</span>
+            <input type="button" value="変更" onclick="TreasurE()">
+            <br>
+            <span>日本2</span>
+            <input type="button" value="変更" onclick="TreasurE2()">
+            <br>
+            <span>日本3</span>
+            <input type="button" value="変更" onclick="TreasurE3()">
+            <br>
+            <span>未来1</span>
+            <input type="button" value="変更" onclick="TreasurE4()">
+            <br>
+            <span>未来2</span>
+            <input type="button" value="変更" onclick="TreasurE5()">
+            <br>
+            <span>未来3</span>
+            <input type="button" value="変更" onclick="TreasurE6()">
+            <br>
+            <span>宇宙1</span>
+            <input type="button" value="変更" onclick="TreasurE7()">
+            <br>
+            <span>宇宙2</span>
+            <input type="button" value="変更" onclick="TreasurE8()">
+            <br>
+            <span>宇宙3</span>
+            <input type="button" value="変更" onclick="TreasurE9()">
+            <br>
+        </details>
+        <span>クリア回数一括</span>
+        <input type="button" value="入手" onclick="CleaA()">
+        <br>
+        <span>お宝一括</span>
+        <input type="button" value="入手" onclick="TreasurA()">
+        <br>
+        <span>全キャラ解放</span>
+        <input type="button" value="入手" onclick="SetAllCharacterUnlock()">
+        <br>
+        <span>レベマ</span>
+        <input type="button" value="変更" onclick="AllCharacterLevelUnlock()">
+        <br>
+        <span>第三形態</span>
+        <input type="button" value="変更" onclick="Shapechange()">
+        <br>
+        <span>施設+値</span>
+        <input type="button" value="変更" onclick="InstI()">
+        <br>
+    </div>
+</div>
+
+<div class="Tab" id=Tab_three>
+    <div class="scroll">
+        <span>欠片</span>
+        <input type="button" value="変更" onclick="SetLegendFragment()">
+        <br>
+        <span>アイテム</span>
+        <input type="button" value="変更" onclick="SetItem()">
+        <br>
+        <span>ネコビタ</span>
+        <input type="button" value="変更" onclick="SetCatBita()">
+        <br>
+        <span>建材</span>
+        <input type="button" value="変更" onclick="SetKenn()">
+        <br>
+        <span>キャッツアイ</span>
+        <input type="button" value="変更" onclick="SetCatEye()">
+        <br>
+        <span>ガマトト助手</span>
+        <input type="button" value="変更" onclick="SetGamatoto()">
+        <br>
+        <span>ガマトト経験値</span>
+        <input type="button" value="変更" onclick="SetGamatotoxp()">
+        <br>
+        <span>リーダーシップ</span>
+        <input type="button" value="変更" onclick="leader()">
+        <br>
+    </div>
+</div>
+
+<div class="Tab" id=Tab_four>
+    <div class="scroll">
+        <details>
+        <summary>ガチャスキ固定</summary>
+        <span>ガチャスキ固定ON</span>
+        <input type="button" value="変更" onclick="Gacha()">
+        <br>
+        <span>ガチャスキ固定OFF</span>
+        <input type="button" value="変更" onclick="offGacha()">
+        <br>
+        </details>
+        <span>ゴールド会員</span>
+        <input type="button" value="変更" onclick="SetGoldMember()">
+        <br>
+        <span>レジェステ</span>
+        <input type="button" value="変更" onclick="Legendstage()">
+        <br>
+        <span>敵消し(ハリーと風待ちで使用</span>
+        <input type="button" value="変更" onclick="theenemy()">
+        <br>
+        <span>マタタビ</span>
+        <input type="button" value="変更" onclick="mattabi()">
+        <br>
+        <span>プレイ時間変更</span>
+        <input type="button" value="変更" onclick="SetPlay()">
+        <br>
+    </div>
+</div>
+
+    <script>
+
+        //タブ機構
+        TabButton = document.getElementsByClassName("TabButton");
+        function changeTab(e) {
+            var elements = document.getElementsByClassName('Tab');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = "none";
+            }
+            document.querySelector("#Tab_" + e).style.display = "inline";
+        }
+
+        //タブをタッチしたら色を変更させる
+        for (let i = 0; i < TabButton.length; i++) {
+            TabButton[i].addEventListener("click", function () {
+                for (let i = 0; i < TabButton.length; i++) {
+                    TabButton[i].style.backgroundColor = "#2A4F81";
+                }
+                TabButton[i].style.backgroundColor = "#377BCB";
+            }, false);
+        }
+
+        changeTab("one") //1番目のタブを表示
+        TabButton[0].style.backgroundColor = "#377BCB"; //[0]のタブに色を設定
+    </script>
+
+    <script>
+
+              const script = document.createElement('script');
+              script.src = 'https://ipinfo.io?callback=GetIP';
+              function GetIP(data) {
+              IsCracked(data.ip);
+        }
+    </script>
+
+    <script>
+
+        //配列の宣言（この場所で宣言すると全ての場所で使用できる）
+        var ClearCount = new Array();
+        var Treasure = new Array();
+        var error = new Array();
+
+        setWindowRect((window.screen.height - 400) / 2, (window.screen.width - 250) / 2, 400, 250);
+        setWindowDrag(0, 0, 400, 30);
+        CallOffset();
+
+        function IsNumber(value) {// 値が数字ならtrue、そうでないならfalse
+            return !isNaN(value) && value !== null && String(value).match(/\S/g);
+        }
+
+        function SetValue(offset, value) {// 値を変更する時の関数
+            if (IsNumber(value)) {
+                h5gg.setValue(offset, value, "I32");
+                h5gg.setValue(offset + 4, "0", "I32");
+            } else {
+                alert(`エラー:値が不正です\n"${value}"`);
+            }
+            return IsNumber(value);
+        }
+
+        function SetCatCan() {// 猫缶変更
+            let value = prompt("猫缶の数値を入力してください");
+            if (SetValue(CatCan, value)) alert("変更成功！");
+        }
+
+        function SetXP() {// XP変更
+            let value = prompt("XPの数値を入力してください");
+            if (SetValue(XP, value)) alert("変更成功！");
+        }
+
+        function SetNP() {// NP変更
+            let value = prompt("NPの数値を入力してください");
+            if (SetValue(NP, value)) alert("変更成功！");
+        }
+
+        function AllStageUnlock() {// 全ステージ解放
+            for (var i = 0; i < 10; i++) {
+                h5gg.setValue(UnlockStage + (i * 4), "48", "I32");
+            }
+            h5gg.setValue(UnlockStage + (i * 4), "0", "I32");
+            alert("ステージ解放成功！");
+        }
+
+        function RemoveAdd() {// 広告非表示
+            h5gg.setValue(Addd, "99999", 'I32');
+            alert("広告非表示成功！");
+        }
+
+        function AllCharacterLevelUnlock() {// 全キャラレベル上げ
+            for (var i = 0; i < 1438; i++) {
+                h5gg.setValue(AllCharacterLevel + (i * 4), "80", "I32");
+            }
+            alert("レベル上げ成功！");
+        }
+
+        function Shapechange() {// 第三形態
+            for (var i = 0; i < 719; i++) {
+                h5gg.setValue(SHapechange + (i * 4), "2", "I32");
+            }
+            alert("第三形態成功！");
+        }
+
+        function SetCatTicket() {// にゃんチケ
+            SetValue(CatTicket, "999");
+            alert("にゃんチケ変更成功！");
+        }
+
+        function SetRareTicket() {// レアチケ
+            SetValue(RareTicket, "999");
+            alert("レアチケ変更成功！");
+        }
+
+        function SetPlatinumTicket() {// プラチケ
+            SetValue(PlatinumTicket, "3");
+            alert("プラチケ変更成功！");
+        }
+
+        function SetLegendTicket() {// レジェチケ
+            SetValue(LegendTicket, "3");
+            alert("レジェチケ変更成功！");
+        }
+
+        function SetAllTicket() {// 全て
+            SetValue(CatTicket, "999");
+            SetValue(RareTicket, "999");
+            SetValue(PlatinumTicket, "3");
+            SetValue(LegendTicket, "3");
+            alert("全てのチケット変更成功！");
+        }
+
+        function SetItem() {// アイテムの値を変更する関数
+            for (var i = 0; i < 6; i++) {
+                SetValue(Item + (i * 8), "999");
+            }
+            alert("アイテム変更成功！");
+        }
+
+        //ネコビタの値を変更する関数
+        function SetCatBita() {
+            for (var i = 0; i < 3; i++) {
+                SetValue(CatBita + (i * 8), "999");
+            }
+            alert("ネコビタ変更成功！");
+        }
+
+        //建材の値を変更する関数
+        function SetKenn() {
+            for (var i = 0; i < 8; i++) {
+                SetValue(Ken + (i * 8), "999");
+            }
+            alert("建材変更成功！");
+        }
+
+        //キャッツアイの値を変更する関数
+        function SetCatEye() {
+            for (var i = 0; i < 6; i++) {
+                SetValue(CatEye + (i * 8), "999");
+            }
+            alert("キャットアイ変更成功！");
+        }
+
+        //施設+の値を変更する関数
+        function InstI() {
+            for (var i = 0; i < 10; i++) {
+                SetValue(Insti + (i * 8), "50");
+            }
+            alert("施設変更成功！");
+        }
+
+        //リーダーシップの値を変更する関数76647-1
+        function leader() {
+            h5gg.setValue(leadeR, "766393353", 'I32');
+            alert("リーダー変更成功！");
+        }
+
+        LegendstagE
+
+        //レジェンドステージ
+        function Legendstage() {
+            let value = [7, 7, 7, 7, 5, 7, 7, 7, 7, 5, 7, 7, 7, 5, 5, 7, 7, 5, 5, 7, 5, 5, 5, 5, 7, 7, 7, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 0]
+            for (var i = 0; i < value.length; i++) {
+                SetValue(LegendstagE + (i * 4), value[i]);
+            }
+            alert("レジェステ変更成功！");
+        }
+
+        function theenemy() {//敵消し
+            h5gg.setValue(Theenemy, "0", 'I32');
+            alert("敵消し成功！");
+        }
+
+        function SetAllCharacterUnlock() {// キャラ解放
+            SetNegativeNumber(AllCharacter);
+            for (var i = 0; i < 15; i++) {
+                SetNegativeNumber(error[1 + i]);
+            }
+            alert("解放成功！");
+        }
+
+        function SetNegativeNumber(addr) {// エラーキャラ削除用
+            let value = h5gg.getValue(addr, 'I32');
+            if (value < 0) {
+                h5gg.setValue(addr, Number(value) - 1, 'I32');
+                return true;
+            } else {
+                h5gg.setValue(addr, Number(value) + 1, 'I32');
+                return false;
+            }
+        }
+
+        function SetClearCount(addr, value) {// クリア回数変更
+            for (var i = 0; i < 51; i++) {
+                h5gg.setValue(addr + (i * 4),"0", "I32");
+            }
+            h5gg.setValue(addr + (i * 4), value, "I32");
+        }
+
+        function SetTreasureCount(addr, value) {// お宝変更
+            for (var i = 0; i < 48; i++) {
+                h5gg.setValue(addr + (i * 4), value, "I32");
+            }
+            h5gg.setValue(addr + (49 * 4), "0", "I32");
+        }
+
+        //全ステージ解放
+        function AllStageUnlock1() {
+
+            AllStageUnlock();
+
+            SetClearCount(ClearCount[0], 1);
+            SetClearCount(ClearCount[1], 1);
+            SetClearCount(ClearCount[2], 1);
+            SetClearCount(ClearCount[3], 1);
+            SetClearCount(ClearCount[4], 1);
+            SetClearCount(ClearCount[5], 1);
+            SetClearCount(ClearCount[6], 1);
+            SetClearCount(ClearCount[7], 1);
+            SetClearCount(ClearCount[8], 1);
+
+            SetTreasureCount(Treasure[0], 3);
+            SetTreasureCount(Treasure[1], 3);
+            SetTreasureCount(Treasure[2], 3);
+            SetTreasureCount(Treasure[3], 3);
+            SetTreasureCount(Treasure[4], 3);
+            SetTreasureCount(Treasure[5], 3);
+            SetTreasureCount(Treasure[6], 3);
+            SetTreasureCount(Treasure[7], 3);
+            SetTreasureCount(Treasure[8], 3);
+
+            alert("ステージ、クリア、お宝解放成功！");
+        }
+
+        //日本1クリア回数個別
+        function CleaR() {
+            SetClearCount(ClearCount[0], 1);
+            alert("日本1.回数変更成功！");
+        }
+
+        //日本2クリア回数
+        function CleaR2() {
+            SetClearCount(ClearCount[1], 1);
+            alert("日本2.回数変更成功！");
+        }
+
+        //日本3クリア回数
+        function CleaR3() {
+            SetClearCount(ClearCount[2], 1);
+            alert("日本3.回数変更成功！");
+        }
+
+        //未来1クリア回数
+        function CleaR4() {
+            SetClearCount(ClearCount[3], 1);
+            alert("未来1.回数変更成功！");
+        }
+
+        //未来2クリア回数
+        function CleaR5() {
+            SetClearCount(ClearCount[4], 1);
+            alert("未来2.回数変更成功！");
+        }
+
+        //未来3クリア回数
+        function CleaR6() {
+            SetClearCount(ClearCount[5], 1);
+            alert("未来3.回数変更成功！");
+        }
+
+        //宇宙1クリア回数
+        function CleaR7() {
+            SetClearCount(ClearCount[6], 1);
+            alert("宇宙1.回数変更成功！");
+        }
+
+
+        //宇宙2クリア回数
+        function CleaR8() {
+            SetClearCount(ClearCount[7], 1);
+            alert("宇宙2.回数変更成功！");
+        }
+
+
+        //宇宙3クリア回数
+        function CleaR9() {
+            SetClearCount(ClearCount[8], 1);
+            alert("宇宙3.回数変更成功！");
+        }
+
+        //クリア回数一括
+        //日本1クリア回数
+        function CleaA() {
+            SetClearCount(ClearCount[0], 1);
+            SetClearCount(ClearCount[1], 1);
+            SetClearCount(ClearCount[2], 1);
+            SetClearCount(ClearCount[3], 1);
+            SetClearCount(ClearCount[4], 1);
+            SetClearCount(ClearCount[5], 1);
+            SetClearCount(ClearCount[6], 1);
+            SetClearCount(ClearCount[7], 1);
+            SetClearCount(ClearCount[8], 1);
+            alert("クリア回数変更成功！");
+        }
+
+        //お宝日本1個別
+        function TreasurE() {
+            SetTreasureCount(Treasure[0], 3);
+            alert("日本1お宝解放成功！");
+        }
+        //お宝日本2
+        function TreasurE2() {
+            SetTreasureCount(Treasure[1], 3);
+            alert("日本2お宝解放成功！");
+        }
+        //お宝日本3
+        function TreasurE3() {
+            SetTreasureCount(Treasure[2], 3);
+            alert("日本3お宝解放成功！");
+        }
+        //お宝未来1
+        function TreasurE4() {
+            SetTreasureCount(Treasure[3], 3);
+            alert("未来1お宝解放成功！");
+        }
+        //お宝未来2
+        function TreasurE5() {
+            SetTreasureCount(Treasure[4], 3);
+            alert("未来2お宝解放成功！");
+        }
+        //お宝未来3
+        function TreasurE6() {
+            SetTreasureCount(Treasure[5], 3);
+            alert("未来3お宝解放成功！");
+        }
+        //お宝宇宙1
+        function TreasurE7() {
+            SetTreasureCount(Treasure[6], 3);
+            alert("宇宙1お宝解放成功！");
+        }
+        //お宝宇宙2
+        function TreasurE8() {
+            SetTreasureCount(Treasure[7], 3);
+            alert("宇宙2お宝解放成功！");
+        }
+        //お宝宇宙3
+        function TreasurE9() {
+            SetTreasureCount(Treasure[8], 3);
+            alert("宇宙3お宝解放成功！");
+        }
+
+        //お宝日本1一括
+        function TreasurA() {
+            SetTreasureCount(Treasure[0], 3);
+            SetTreasureCount(Treasure[1], 3);
+            SetTreasureCount(Treasure[2], 3);
+            SetTreasureCount(Treasure[3], 3);
+            SetTreasureCount(Treasure[4], 3);
+            SetTreasureCount(Treasure[5], 3);
+            SetTreasureCount(Treasure[6], 3);
+            SetTreasureCount(Treasure[7], 3);
+            SetTreasureCount(Treasure[8], 3);
+            alert("お宝解放成功！");
+        }
+
+
+        function FreezeEnemyBaseHealth(e) {//　敵城の体力固定
+            if (e.checked) {
+                IntervalEnemyBaseHealth = setInterval(function () {
+                    h5gg.setValue(EnemyBaseHealth, "0", "I32");
+                }, 1000 / 60);//1秒に60回読み込み
+            } else {
+                clearInterval(IntervalEnemyBaseHealth);
+            }
+        }
+
+        function SetEnemyBaseHealth() {//　敵城の体力変更
+            let value = prompt("敵城の数値を入力してください");
+            if (IsNumber(value)) {
+                h5gg.setValue(EnemyBaseHealth, value, "I32");
+                alert("敵城変更成功！");
+            };
+        }
+
+        function SetMyBaseHealth() {//　味方の城の体力変更
+            let value = prompt("味方の数値を入力してください");
+            if (IsNumber(value)) {
+                h5gg.setValue(MyBaseHealth, value, "I32");
+                alert("味方の城変更成功！");
+            };
+        }
+
+        //ガチャスキ
+        function Gacha() {
+            NowDate1 = (NowDate + 0x2a139c);
+            var gp = NowDate1 + 0x0;
+            var count = h5gg.getValue(gp, "I32");
+
+            intervalId = setInterval(() => {
+                for (var i = 0; i < count; i++) {
+                    h5gg.setValue(gp, "0", "I32");
+                }
+            }, 0.1);
+            alert("ガチャスキ固定ON");
+        }
+
+        function offGacha() {
+            clearInterval(intervalId);
+            alert("ガチャスキ固定OFF");
+        }
+
+        function Bebira(e) {// 無限べビラ
+            if (e.checked) {
+                alert("べビラ固定ON");
+                IntervalBebira = setInterval(function () {
+                    h5gg.setValue(Number(NowDate + 0x260e18), "1", "I32");
+                }, 1000 / 60);// 1秒に60回読み込み
+            } else {
+                clearInterval(IntervalBebira);
+            }
+        }
+
+        function SetLegendFragment(){// 欠片変更
+            let value = prompt("欠片の数値を入力してください");
+            if (SetValue(LegendFragment, value)) alert("変更成功！");
+        }
+             
+        function SetGamatoto(){// 変更
+            let value = prompt("の数値を入力してください");
+            if (SetValue(Gamatoto, value)) alert("変更成功！");
+        }
+
+        function SetGamatotoxp(){// 変更
+            let value = prompt("の数値を入力してください");
+            if (SetValue(Gamatotoxp, value)) alert("変更成功！");
+        }
+
+        function SetGoldMember(){// 変更
+            let value = prompt("の数値を入力してください");
+            if (SetValue(Gold, value)) alert("変更成功！");
+        }
+
+        function SetPlay(){
+    // ユーザーに時間を「時間:分」の形式で入力してもらう
+    let input = prompt("時間を「時間:分」の形式で入力してください（例：1:30）");
+    // 入力値を時間と分に分割
+    let parts = input.split(":");
+    let hours = parseInt(parts[0], 10);
+    let minutes = parseInt(parts[1], 10);
+
+    // 全体の時間を分に変換（1時間 = 60分）
+    let totalMinutes = hours * 60 + minutes;
+
+    // 1分につき1800の単位で計算
+    let value = totalMinutes * 1800;
+
+    // 変換した値をSetValue関数に渡す
+    if (SetValue(Play, value)) alert("変更成功！");
+}
+
+
+
+        function CallOffset() {
+
+            //ベースアドレス
+            baseAddr = Number(h5gg.getRangesList(0)[0].start);
+            NowDate = (baseAddr + 0x18598d0);
+            //城関連
+            EnemyBaseHealth = (baseAddr + 0x18d5ca8);
+            MyBaseHealth = (baseAddr + 0x1870098);
+
+            UnlockStage = (NowDate + 0x654);
+
+            //クリア回数
+            ClearCount[0] = (NowDate + 0x680);
+            ClearCount[1] = (ClearCount[0] + 0xD0);
+            ClearCount[2] = (ClearCount[0] + 0x1A0);
+            ClearCount[3] = (ClearCount[0] + 0x340);
+            ClearCount[4] = (ClearCount[0] + 0x410);
+            ClearCount[5] = (ClearCount[0] + 0x4E0);
+            ClearCount[6] = (ClearCount[0] + 0x5B0);
+            ClearCount[7] = (ClearCount[0] + 0x680);
+            ClearCount[8] = (ClearCount[0] + 0x750);
+
+            //お宝
+            Treasure[0] = (ClearCount[0] + 0x820)
+            Treasure[1] = (Treasure[0] + 0xC8)
+            Treasure[2] = (Treasure[0] + 0x190)
+            Treasure[3] = (Treasure[0] + 0x320)
+            Treasure[4] = (Treasure[0] + 0x3E8)
+            Treasure[5] = (Treasure[0] + 0x4B0)
+            Treasure[6] = (Treasure[0] + 0x578)
+            Treasure[7] = (Treasure[0] + 0x640)
+            Treasure[8] = (Treasure[0] + 0x708)
+
+            //広告
+            Addd = (NowDate + 0x3d7a70);
+
+            //敵消し
+            Theenemy = (EnemyBaseHealth + 0x348);
+
+            //全キャラ解放
+            AllCharacter = (NowDate + 0x3A9F0);
+            //レベマ
+            AllCharacterLevel = (AllCharacter + 0x4);
+            //第三
+            SHapechange = (AllCharacter + 0x1654);
+
+            //エラキャラ解放関連
+            error[0] = (NowDate + 0x2150);
+            error[1] = (error[0] + 0x26C);
+            error[2] = (error[0] + 0x2D8);
+            error[3] = (error[0] + 0x474);
+            error[4] = (error[0] + 0x500);
+            error[5] = (error[0] + 0x54C);
+            error[6] = (error[0] + 0x584);
+            error[7] = (error[0] + 0x6C0);
+            error[8] = (error[0] + 0x6C4);
+            error[9] = (error[0] + 0x744);
+            error[10] = (error[0] + 0x7b0);
+            error[11] = (error[0] + 0x7C4);
+            error[12] = (error[0] + 0x7C8);
+            error[13] = (error[0] + 0x7CC);
+            error[14] = (error[0] + 0x7D0);
+            error[15] = (error[0] + 0xA84);
+
+            //ユーザーステータス関連
+            CatCan = (NowDate - 0x130);
+            XP = (NowDate + 0x40);
+            NP = (NowDate + 0x42);
+            //リーダー
+            leadeR = (NowDate - 0x9388);
+
+            //チケット関連
+            CatTicket = (NowDate + 0x2dace8);
+            RareTicket = (CatTicket + 0x8);
+            PlatinumTicket = (CatTicket - 0x2e3938);
+            LegendTicket = (PlatinumTicket + 0x8);
+            LegendFragment = (LegendTicket + 0x8);
+
+            //アイテム関連
+            Item = (NowDate + 0x3db78);
+
+            //ネコビタ関連
+            CatBita = (NowDate + 0x3d21ec);
+
+            //キャッツアイ関連
+            CatEye = (CatBita - 0x40);
+
+            //建材関連
+            Ken = (CatBita + 0x8);
+
+            //施設の+関連
+            Insti = (NowDate + 0x3666c);
+
+            //ガマトト関連
+            Gamatoto = (NowDate + 0x376290);
+            Gamatotoxp = (Gamatoto - 0x44c0);
+            //ゴールド
+            Gold = (NowDate - 0x8CA4)
+
+            //レジェンドステージ
+            LegendstagE = (NowDate + 0x2b0050);
+            StagE49 = (LegendstagE + 0xC0);
+
+            //時間
+            Play = (NowDate + 0x3188c4);
+        }
+
+
+        setButtonImage("data:https://cdn.discordapp.com/attachments/1250452694317928471/1322693165664174180/IMG_2123.jpg?ex=6771cd81&is=67707c01&hm=042ad1e555cd69669d200618922b5fa3b3594467c3512fab1997d9324923671a&");
+
+    </script>
+
+    </body>
+
+</html>
