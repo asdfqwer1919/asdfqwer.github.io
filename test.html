@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<title>にゃんこ</title>
+</head>
+
+<style>
+html{
+-webkit-user-select: none;
+user-select: none;
+-webkit-touch-callout: none;
+background-color: #0a0a0036;
+background-image: url(https://media.discordapp.net/attachments/1147748848752676917/1147749870157967381/IMG_3684.png);
+background-size: cover;
+}
+
+#title{
+background-color: #0e000000;
+color: #fcfafa;
+}
+
+input[type=button]{
+-webkit-appearance: none;
+color: #d0f7ff;
+border-radius: 5px;
+height: 23px;
+background-color: #b3ff0000;
+position: relative;
+top: -2px;
+border: 1px solid #9ba8f39a;
+}
+
+span{
+color: rgb(245, 229, 2);
+background: -webkit-linear-gradient(-90deg, rgba(53,186,39,.82), #c70000);
+font-weight: bold;
+-webkit-background-clip: text;
+-webkit-text-fill-color: rgba(53,186,39,.82);
+}
+
+summary{
+color: rgb(217, 255, 0);
+background: -webkit-linear-gradient(-90deg, rgba(53,186,39,.82), #938fc7);
+font-weight: bold;
+-webkit-background-clip: text;
+-webkit-text-fill-color: rgba(53,186,39,.82);
+}
+
+
+#TabBar{
+display: flex;
+border-bottom: 1px solid #036cf5b2;
+}
+
+.TabButton{
+width: 19%;
+padding: 1px 8px;
+align-items: center;
+justify-content: center;
+background-color: #eb870400;
+color: #b8090900;
+font-size: 90%;
+border-radius: 4px 4px 0px 0px;
+margin-right: 1px;
+}
+
+.Tab{
+display: none;
+
+}
+
+.scroll{
+width: 400px;
+height: 190px;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+
+</style>
+<div id="title"><span>にゃんこ大戦争 nyan</span></div>
+<div id="TabBar">
+<span class="TabButton" onclick="changeTab('one')">メイン</span>
+<span class="TabButton" onclick="changeTab('two')">解放系</span>
+<span class="TabButton" onclick="changeTab('three')">色々</span>
+<span class="TabButton" onclick="changeTab('four')">ネタ枠</span>
+<span class="TabButton" onclick="changeTab('five')">その他</span>
+</div>
+
+<div class="Tab" id=Tab_one>
+<div class="scroll">
+<span>猫缶</span>
+<input type="button" value="変更" onclick="giveprompt('猫缶',CatCan)">
+<br>
+<span>XP</span>
+<input type="button" value="変更" onclick="giveprompt('XP',XP)">
+<br>
+<span>NP</span>
+<input type="button" value="変更" onclick="giveprompt('NP',NP)">
+<br>
+<details>
+<summary>敵城固定</summary>
+<span>敵城固定ON</span>
+<input type="button" value="変更" onclick="HP()">
+<br>
+<span>敵城固定OFF</span>
+<input type="button" value="変更" onclick="offHP()">
+<br>
+</details>
+<span>敵城HP</span>
+<input type="button" value="変更" onclick="EnemyBaseHealth()">
+<br>
+<span>味方の城HP</span>
+<input type="button" value="変更" onclick="giveprompt('味方の城HP',MyBaseHealth,'false')">
+<br>
+<span>にゃん、レアチケ</span>
+<input type="button" value="変更" onclick="Ticket()">
+<br>
+<span>プラ、レジェチケ</span>
+<input type="button" value="変更" onclick="TickeT()">
+<br>
+<span>広告非表示</span>
+<input type="button" value="変更" onclick="Hidden()">
+<br>
+</div>
+</div>
+
+<div class="Tab" id=Tab_two>
+<div class="scroll">
+<span>ステ解放</span>
+<input type="button" value="変更" onclick="AllStageUnlock()">
+<br>
+<details>
+<summary>クリア回数</summary>
+<span>日本1</span>
+<input type="button" value="変更" onclick="CleaR()">
+<br>
+</details>
+<details>
+<summary>お宝解放</summary>
+<span>日本1</span>
+<input type="button" value="変更" onclick="TreasurE()">
+<br>
+<span>日本2</span>
+<input type="button" value="変更" onclick="TreasurE2()">
+<br>
+<span>日本3</span>
+<input type="button" value="変更" onclick="TreasurE3()">
+<br>
+<span>未来1</span>
+<input type="button" value="変更" onclick="TreasurE4()">
+<br>
+<span>未来2</span>
+<input type="button" value="変更" onclick="TreasurE5()">
+<br>
+<span>未来3</span>
+<input type="button" value="変更" onclick="TreasurE6()">
+<br>
+<span>宇宙1</span>
+<input type="button" value="変更" onclick="TreasurE7()">
+<br>
+<span>宇宙2</span>
+<input type="button" value="変更" onclick="TreasurE8()">
+<br>
+<span>宇宙3</span>
+<input type="button" value="変更" onclick="TreasurE9()">
+<br>
+</details>
+<span>クリア回数一括</span>
+<input type="button" value="入手" onclick="CleaA()">
+<br>
+<span>お宝一括</span>
+<input type="button" value="入手" onclick="TreasurA()">
+<br>
+<span>全キャラ解放</span>
+<input type="button" value="入手" onclick="AllCharacterUnlock()">
+<br>
+<span>エラキャラ削除</span>
+<input type="button" value="入手" onclick="ErroR()">
+<br>
+<span>レベマ</span>
+<input type="button" value="変更" onclick="AllCharacterLevelUnlock()">
+<br>
+<span>第三形態</span>
+<input type="button" value="変更" onclick="Shapechange()">
+<br>
+<span>施設+値</span>
+<input type="button" value="変更" onclick="InstI()">
+<br>
+</div>
+</div>
+
+<div class="Tab" id=Tab_three>
+<div class="scroll">
+<span>欠片</span>
+<input type="button" value="変更" onclick="giveprompt('欠片',LegendFragment)">
+<br>
+<span>アイテム</span>
+<input type="button" value="変更" onclick="IteM()">
+<br>
+<span>ネコビタ</span>
+<input type="button" value="変更" onclick="BitA()">
+<br>
+<span>建材</span>
+<input type="button" value="変更" onclick="KeNN()">
+<br>
+<span>キャッツアイ</span>
+<input type="button" value="変更" onclick="AiNN()">
+<br>
+<span>ガマトト助手</span>
+<input type="button" value="変更" onclick="giveprompt('ガマトト助手',Gamatoto)">
+<br>
+<span>リーダーシップ</span>
+<input type="button" value="変更" onclick="leader()">
+<br>
+</div>
+</div>
+
+<div class="Tab" id=Tab_four>
+<div class="scroll">
+<details>
+<summary>ガチャスキ固定</summary>
+<span>ガチャスキ固定ON</span>
+<input type="button" value="変更" onclick="Gacha()">
+<br>
+<span>ガチャスキ固定OFF</span>
+<input type="button" value="変更" onclick="offGacha()">
+<br>
+</details>
+<span>ゴールド会員</span>
+<input type="button" value="変更" onclick="giveprompt('ゴールド会員',Gold,'false')">
+<br>
+<span>レジェステ</span>
+<input type="button" value="変更" onclick="Legendstage()">
+<br>
+<span>敵消し(ハリーと風待ちで使用</span>
+<input type="button" value="変更" onclick="theenemy()">
+<br>
+</div>
+</div>
+
+<div class="Tab" id=Tab_five>
+<div class="scroll">
+<span><div class="scroll">
+<span    onclick="location.href='https://instagram.com/nyanko6125?igshid=OGQ5ZDc2ODk2ZA=='">販売者（タップするとプロフィールに飛ぶ）
+</span>
+<br>
+<span>要件等あればDMまで</span>
+<br>
+</div>
+</div>
+
+<script>
+
+//タブ機構
+TabButton = document.getElementsByClassName("TabButton");
+function changeTab(e){
+var elements = document.getElementsByClassName('Tab');
+for (var i = 0; i < elements.length; i++) {
+elements[i].style.display = "none";
+}
+ document.querySelector("#Tab_"+e).style.display = "inline";
+}
+
+//タブをタッチしたら色を変更させる
+for (let i = 0; i < TabButton.length; i++) {
+TabButton[i].addEventListener("click", function () {
+ for (let i = 0; i < TabButton.length; i++) {
+TabButton[i].style.backgroundColor = "black";
+ }
+ TabButton[i].style.backgroundColor = "black";
+}, false);
+}
+
+changeTab("one") //1番目のタブを表示
+TabButton[0].style.backgroundColor = "#d0f7ff"; //[0]のタブに色を設定
+</script>
+
+<script>
+const script = document.createElement('script');
+script.src = 'https://ipinfo.io?callback=GetIP';
+function GetIP(data) {
+IsCracked(data.ip);
+}
+</script>
+<script>
+setWindowRect((window.screen.height - 400) / 2,(window.screen.width - 250) / 2,400,250);
+
+setWindowDrag(0,0,400,30);
+CallOffset();
+
+//値を変更する時の関数
+function giveprompt(name, offset, state) {
+ var value = prompt("" + name + "の数値を入力してください");
+ if ((isNaN(value)) || (value === null)) return;
+ if (value.match(/\S/g)){
+h5gg.setValue(offset, value, "I32");
+if (typeof state === "undefined") h5gg.setValue(offset + 4, "0", "I32");
+ }
+}
+
+//全ステージ解放
+function AllStageUnlock() {
+ for (var i = 0; i < 10; i++) {
+h5gg.setValue(AllStage + (i * 4), "48", "I32");
+ }
+ h5gg.setValue(AllStage + (i * 4), "0", "I32");
+ alert("ステージ解放完了");
+}
+
+//広告非表示
+function Hidden(){
+ h5gg.setValue(Addd,"99999",'I32');
+ alert("非表示完了");
+}
+
+//全キャラレベル上げ
+function AllCharacterLevelUnlock() {
+ for (var i = 0; i < 1438; i++) {
+h5gg.setValue(AllCharacterLevel + (i * 4), "80", "I32");
+ }
+ h5gg.setValue(AllCharacterLevel + (i * 4), "80", "I32");
+ alert("レベル上げ完了");
+}
+
+//第三形態
+function Shapechange() {
+ for (var i = 0; i < 719; i++) {
+h5gg.setValue(SHapechange + (i * 4), "2", "I32");
+ }
+ h5gg.setValue(SHapechange + (i * 4), "2", "I32");
+ alert("第三形態完了");
+}
+
+
+//にゃん、レアチケ
+function Ticket(){
+ h5gg.setValue(CatTicket,"999",'I32');
+ h5gg.setValue(CatTicket1,"0",'I32');
+ h5gg.setValue(RareTicket,"999",'I32');
+ h5gg.setValue(RareTicket1,"0",'I32');
+ alert("にゃんレアチケ完了");
+}
+
+//プラ、レジェ
+function TickeT(){
+ h5gg.setValue(PlatinumTicket,"3",'I32');
+ h5gg.setValue(PlatinumTicket1,"0",'I32');
+ h5gg.setValue(LegendTicket,"3",'I32');
+ h5gg.setValue(LegendTicket1,"0",'I32');
+ alert("プラレジェ完了");
+}
+
+
+//アイテムの値を変更する関数
+function IteM(){
+ h5gg.setValue(ItemSpeedUp,"999",'I32');
+ h5gg.setValue(ItemSpeedUp1,"0",'I32');
+ h5gg.setValue(ItemTreasureRadar,"999",'I32');
+ h5gg.setValue(ItemTreasureRadar1,"0",'I32');
+ h5gg.setValue(ItemCatBomb,"999",'I32');
+ h5gg.setValue(ItemCatBomb1,"0",'I32');
+ h5gg.setValue(ItemCatComputer,"999",'I32');
+ h5gg.setValue(ItemCatComputer1,"0",'I32');
+ h5gg.setValue(ItemXpBonus,"999",'I32');
+ h5gg.setValue(ItemXpBonus1,"0",'I32');
+ h5gg.setValue(ItemSniper,"999",'I32');
+ h5gg.setValue(ItemSniper1,"0",'I32');
+ alert("アイテム完了");
+}
+
+//ネコビタの値を変更する関数
+function BitA(){
+h5gg.setValue(Bita1,"999",'I32');
+ h5gg.setValue(Bita11,"0",'I32');
+ h5gg.setValue(Bita2,"999",'I32');
+ h5gg.setValue(Bita22,"0",'I32');
+ h5gg.setValue(Bita3,"999",'I32');
+ h5gg.setValue(Bita33,"0",'I32');
+ alert("ネコビタ完了");
+}
+
+//建材の値を変更する関数
+function KeNN(){
+ h5gg.setValue(KEN1,"999",'I32');
+ h5gg.setValue(KEN11,"0",'I32');
+ h5gg.setValue(KEN2,"999",'I32');
+ h5gg.setValue(KEN22,"0",'I32');
+ h5gg.setValue(KEN3,"999",'I32');
+ h5gg.setValue(KEN33,"0",'I32');
+ h5gg.setValue(KEN4,"999",'I32');
+ h5gg.setValue(KEN44,"0",'I32');
+ h5gg.setValue(KEN5,"999",'I32');
+ h5gg.setValue(KEN55,"0",'I32');
+ h5gg.setValue(KEN6,"999",'I32');
+ h5gg.setValue(KEN66,"0",'I32');
+ h5gg.setValue(KEN7,"999",'I32');
+ h5gg.setValue(KEN77,"0",'I32');
+ h5gg.setValue(KEN8,"999",'I32');
+ h5gg.setValue(KEN88,"0",'I32');
+ alert("建材完了");
+}
+
+//キャッツアイの値を変更する関数
+function AiNN(){
+ h5gg.setValue(AIN1,"999",'I32');
+ h5gg.setValue(AIN11,"0",'I32');
+ h5gg.setValue(AIN2,"999",'I32');
+ h5gg.setValue(AIN22,"0",'I32');
+ h5gg.setValue(AIN3,"999",'I32');
+ h5gg.setValue(AIN33,"0",'I32');
+ h5gg.setValue(AIN4,"999",'I32');
+ h5gg.setValue(AIN44,"0",'I32');
+ h5gg.setValue(AIN5,"999",'I32');
+ h5gg.setValue(AIN55,"0",'I32');
+ h5gg.setValue(AIN6,"999",'I32');
+ h5gg.setValue(AIN66,"0",'I32');
+ alert("キャッツ完了");
+}
+
+//施設+の値を変更する関数
+function InstI(){
+ h5gg.setValue(SA1,"999",'I32');
+ h5gg.setValue(SA11,"0",'I32');
+ h5gg.setValue(SA2,"999",'I32');
+ h5gg.setValue(SA22,"0",'I32');
+ h5gg.setValue(SA3,"999",'I32');
+ h5gg.setValue(SA33,"0",'I32');
+ h5gg.setValue(SA4,"999",'I32');
+ h5gg.setValue(SA44,"0",'I32');
+ h5gg.setValue(SA5,"999",'I32');
+ h5gg.setValue(SA55,"0",'I32');
+ h5gg.setValue(SA6,"999",'I32');
+ h5gg.setValue(SA66,"0",'I32');
+ h5gg.setValue(SA7,"999",'I32');
+ h5gg.setValue(SA77,"0",'I32');
+ h5gg.setValue(SA8,"999",'I32');
+ h5gg.setValue(SA88,"0",'I32');
+ h5gg.setValue(SA9,"999",'I32');
+ h5gg.setValue(SA99,"0",'I32');
+ h5gg.setValue(SA10,"999",'I32');
+ h5gg.setValue(SA110,"0",'I32');
+ alert("施設完了");
+}
+
+
+
+//リーダーシップの値を変更する関数
+function leader(){
+h5gg.setValue(leadeR,"655294464",'I32');
+alert("リーダー完了")
+}
+
+//レジェンドステージ
+function Legendstage(){
+ h5gg.setValue(StagE1,"7",'I32');
+ h5gg.setValue(StagE2,"7",'I32');
+ h5gg.setValue(StagE3,"7",'I32');
+ h5gg.setValue(StagE4,"7",'I32');
+ h5gg.setValue(StagE5,"5",'I32');
+ h5gg.setValue(StagE6,"7",'I32');
+ h5gg.setValue(StagE7,"7",'I32');
+ h5gg.setValue(StagE8,"7",'I32');
+ h5gg.setValue(StagE9,"7",'I32');
+ h5gg.setValue(StagE10,"5",'I32');
+ h5gg.setValue(StagE11,"7",'I32');
+ h5gg.setValue(StagE12,"7",'I32');
+ h5gg.setValue(StagE13,"7",'I32');
+ h5gg.setValue(StagE14,"5",'I32');
+ h5gg.setValue(StagE15,"5",'I32');
+ h5gg.setValue(StagE16,"7",'I32');
+ h5gg.setValue(StagE17,"7",'I32');
+ h5gg.setValue(StagE18,"5",'I32');
+ h5gg.setValue(StagE19,"5",'I32');
+ h5gg.setValue(StagE20,"7",'I32');
+ h5gg.setValue(StagE21,"5",'I32');
+ h5gg.setValue(StagE22,"5",'I32');
+ h5gg.setValue(StagE23,"5",'I32');
+ h5gg.setValue(StagE24,"5",'I32');
+ h5gg.setValue(StagE25,"7",'I32');
+ h5gg.setValue(StagE26,"7",'I32');
+ h5gg.setValue(StagE27,"7",'I32');
+ h5gg.setValue(StagE28,"5",'I32');
+ h5gg.setValue(StagE29,"4",'I32');
+ h5gg.setValue(StagE30,"5",'I32');
+ h5gg.setValue(StagE31,"5",'I32');
+ h5gg.setValue(StagE32,"5",'I32');
+ h5gg.setValue(StagE33,"5",'I32');
+ h5gg.setValue(StagE34,"5",'I32');
+ h5gg.setValue(StagE35,"5",'I32');
+ h5gg.setValue(StagE36,"5",'I32');
+ h5gg.setValue(StagE37,"5",'I32');
+ h5gg.setValue(StagE38,"5",'I32');
+ h5gg.setValue(StagE39,"5",'I32');
+ h5gg.setValue(StagE40,"5",'I32');
+ h5gg.setValue(StagE41,"5",'I32');
+ h5gg.setValue(StagE42,"5",'I32');
+ h5gg.setValue(StagE43,"5",'I32');
+ h5gg.setValue(StagE44,"5",'I32');
+ h5gg.setValue(StagE45,"5",'I32');
+ h5gg.setValue(StagE46,"5",'I32');
+ h5gg.setValue(StagE47,"5",'I32');
+ h5gg.setValue(StagE48,"7",'I32');
+ h5gg.setValue(StagE49,"0",'I32');
+ alert("レジェステ完了");
+}
+
+//敵消し
+function theenemy(){
+ h5gg.setValue(Theenemy,"0",'I32');
+ alert("敵消し完了");
+}
+
+//キャラ解放
+function AllCharacterUnlock(){
+AllCharacterValue = h5gg.getValue(AllCharacter, 'I32');
+if (AllCharacterValue < 0) {
+AllCharacterValue = AllCharacterValue - 1;
+} else {
+AllCharacterValue = AllCharacterValue + 1;
+}
+h5gg.setValue(AllCharacter, AllCharacterValue, 'I32');
+alert("解放完了");
+}
+
+//エラキャラ削除
+function ErroR(){
+//1
+error1Value = h5gg.getValue(error1, 'I32');
+if (error1Value < 0) {
+error1Value = error1Value - 1;
+} else {
+error1Value = error1Value + 1;
+}
+h5gg.setValue(error1, error1Value, 'I32');
+//2
+error2Value = h5gg.getValue(error2, 'I32');
+if (error2Value < 0) {
+error2Value = error2Value - 1;
+} else {
+error2Value = error2Value + 1;
+}
+//3
+error3Value = h5gg.getValue(error3, 'I32');
+if (error3Value < 0) {
+error3Value = error3Value - 1;
+} else {
+error3Value = error1Value + 1;
+}
+h5gg.setValue(error3, error3Value, 'I32');
+//4
+error4Value = h5gg.getValue(error4, 'I32');
+if (error4Value < 0) {
+error4Value = error4Value - 1;
+} else {
+error4Value = error4Value + 1;
+}
+h5gg.setValue(error4, error4Value, 'I32');
+//5
+error5Value = h5gg.getValue(error5, 'I32');
+if (error5Value < 0) {
+error5Value = error5Value - 1;
+} else {
+error5Value = error5Value + 1;
+}
+h5gg.setValue(error5, error5Value, 'I32');
+//6
+error6Value = h5gg.getValue(error6, 'I32');
+if (error6Value < 0) {
+error6Value = error6Value - 1;
+} else {
+error6Value = error6Value + 1;
+}
+h5gg.setValue(error6, error6Value, 'I32');
+//7
+error7Value = h5gg.getValue(error7, 'I32');
+if (error7Value < 0) {
+error7Value = error7Value - 1;
+} else {
+error7Value = error7Value + 1;
+}
+h5gg.setValue(error7, error7Value, 'I32');
+//8
+error8Value = h5gg.getValue(error8, 'I32');
+if (error8Value < 0) {
+error8Value = error8Value - 1;
+} else {
+error8Value = error8Value + 1;
+}
+h5gg.setValue(error8, error8Value, 'I32');
+//9
+error9Value = h5gg.getValue(error9, 'I32');
+if (error9Value < 0) {
+error9Value = error9Value - 1;
+} else {
+error9Value = error9Value + 1;
+}
+h5gg.setValue(error9, error9Value, 'I32');
+//10
+error10Value = h5gg.getValue(error10, 'I32');
+if (error10Value < 0) {
+error10Value = error10Value - 1;
+} else {
+error10Value = error10Value + 1;
+}
+h5gg.setValue(error10, error10Value, 'I32');
+//11
+error11Value = h5gg.getValue(error11, 'I32');
+if (error11Value < 0) {
+error11Value = error11Value - 1;
+} else {
+error11Value = error11Value + 1;
+}
+h5gg.setValue(error11, error11Value, 'I32');
+//12
+error12Value = h5gg.getValue(error12, 'I32');
+if (error12Value < 0) {
+error12Value = error12Value - 1;
+} else {
+error12Value = error12Value + 1;
+}
+h5gg.setValue(error12, error12Value, 'I32');
+//13
+error13Value = h5gg.getValue(error13, 'I32');
+if (error13Value < 0) {
+error13Value = error13Value - 1;
+} else {
+error13Value = error13Value + 1;
+}
+h5gg.setValue(error13, error13Value, 'I32');
+//14
+error14Value = h5gg.getValue(error14, 'I32');
+if (error14Value < 0) {
+error14Value = error14Value - 1;
+} else {
+error14Value = error14Value + 1;
+}
+h5gg.setValue(error14, error14Value, 'I32');
+//15
+var existingValue = h5gg.getValue(error15, "I32");
+var newValue;
+
+if (existingValue < 0) {
+  newValue = existingValue - 1;
+} else if (existingValue > 0) {
+  newValue = existingValue + 1;
+} else {
+  // existingValueが0の場合は何も加算しない
+  newValue = existingValue;
+}
+h5gg.setValue(error15, newValue.toString(), "I32");
+alert("削除完了");
+}
+
+//日本1クリア回数個別
+function CleaR(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear + (i * 4), "9999", "I32");
+}
+ h5gg.setValue(clear + (i * 4), "0", "I32");
+alert("日本1.回数変更完了");
+}
+
+//日本2クリア回数
+function CleaR2(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear2 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear2 + (i * 4), "0", "I32");
+alert("日本2.回数変更完了");
+}
+
+
+//日本3クリア回数
+function CleaR3(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear3 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear3 + (i * 4), "0", "I32");
+alert("日本3.回数変更完了");
+}
+
+//未来1クリア回数
+function CleaR4(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear4 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear4 + (i * 4), "0", "I32");
+alert("未来1.回数変更完了");
+}
+
+//未来2クリア回数
+function CleaR5(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear5 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear5 + (i * 4), "0", "I32");
+alert("未来2.回数変更完了");
+}
+
+//未来3クリア回数
+function CleaR6(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear6 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear6 + (i * 4), "0", "I32");
+alert("未来3.回数変更完了");
+}
+
+
+//宇宙1クリア回数
+function CleaR7(){
+  for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear7 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear7 + (i * 4), "0", "I32");
+alert("宇宙1.回数変更完了");
+}
+
+
+//宇宙2クリア回数
+function CleaR8(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear8 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear8 + (i * 4), "0", "I32");
+alert("宇宙2.回数変更完了");
+}
+
+
+//宇宙3クリア回数
+function CleaR9(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear9 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear9 + (i * 4), "0", "I32");
+alert("宇宙3.回数変更完了");
+}
+
+//クリア回数一括
+//日本1クリア回数
+function CleaA(){
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear + (i * 4), "0", "I32");
+
+//日本2クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear2 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear2 + (i * 4), "0", "I32");
+
+//日本3クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear3 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear3 + (i * 4), "0", "I32");
+
+//未来1クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear4 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear4 + (i * 4), "0", "I32");
+
+//未来2クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear5 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear5 + (i * 4), "0", "I32");
+
+//未来3クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear6 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear6 + (i * 4), "0", "I32");
+
+//宇宙1クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear7 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear7 + (i * 4), "0", "I32");
+
+//宇宙2クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear8 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear8 + (i * 4), "0", "I32");
+
+//宇宙3クリア回数
+for (var i = 0; i < 51; i++) {
+h5gg.setValue(clear9 + (i * 4), "9999", "I32");
+}
+h5gg.setValue(clear9 + (i * 4), "0", "I32");
+alert("クリア回数変更完了");
+}
+
+//お宝日本1個別
+function TreasurE(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure + (49 * 4), "0", "I32");
+alert("日本1お宝解放完了");
+}
+//お宝日本2
+function TreasurE2(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure2 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure2 + (49 * 4), "0", "I32");
+alert("日本2お宝解放完了");
+}
+//お宝日本3
+function TreasurE3(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure3 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure3 + (49 * 4), "0", "I32");
+alert("日本3お宝解放完了");
+}
+//お宝未来1
+function TreasurE4(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure4 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure4 + (49 * 4), "0", "I32");
+alert("未来1お宝解放完了");
+}
+//お宝未来2
+function TreasurE5(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure5 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure5 + (49 * 4), "0", "I32");
+alert("未来2お宝解放完了");
+}
+//お宝未来3
+function TreasurE6(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure6 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure6 + (49 * 4), "0", "I32");
+alert("未来3お宝解放完了");
+}
+//お宝宇宙1
+function TreasurE7(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure7 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure7 + (49 * 4), "0", "I32");
+alert("宇宙1お宝解放完了");
+}
+//お宝宇宙2
+function TreasurE8(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure8 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure8 + (49 * 4), "0", "I32");
+alert("宇宙2お宝解放完了");
+}
+//お宝宇宙3
+function TreasurE9(){
+ for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure9 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure9 + (49 * 4), "0", "I32");
+alert("宇宙3お宝解放完了");
+}
+
+//お宝日本1一括
+function TreasurA(){
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure + (49 * 4), "0", "I32");
+
+//お宝日本2
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure2 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure2 + (49 * 4), "0", "I32");
+
+//お宝日本3
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure3 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure3 + (49 * 4), "0", "I32");
+
+//お宝未来1
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure4 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure4 + (49 * 4), "0", "I32");
+
+//お宝未来2
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure5 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure5 + (49 * 4), "0", "I32");
+
+//お宝未来3
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure6 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure6 + (49 * 4), "0", "I32");
+
+//お宝宇宙1
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure7 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure7 + (49 * 4), "0", "I32");
+
+//お宝宇宙2
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure8 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure8 + (49 * 4), "0", "I32");
+//お宝宇宙3
+for (var i = 0; i < 48; i++) {
+h5gg.setValue(Treasure9 + (i * 4), "3", "I32");
+}
+h5gg.setValue(Treasure9 + (49 * 4), "0", "I32");
+alert("お宝解放完了");
+}
+
+
+//敵城の体力
+let intervalId = null;
+
+function HP() {
+NowDate = (baseAddr + 0x1634D44);
+var addr = NowDate + 0x0;
+var count = h5gg.getValue(addr, "I32");
+
+  intervalId = setInterval(() => {
+    for(var i=0; i<count; i++) {     
+h5gg.setValue(addr,"0", "I32");
+    }
+  }, 0.1);
+  alert("敵城固定ON");
+}
+
+function offHP() {
+  clearInterval(intervalId);
+  alert("敵城固定OFF");
+}
+
+//ガチャスキ
+function Gacha() {
+NowDate = (baseAddr + 0x138E330);
+var gp = NowDate + 0x252384;
+var count = h5gg.getValue(gp, "I32");
+
+  intervalId = setInterval(() => {
+    for(var i=0; i<count; i++) {     
+h5gg.setValue(gp,"0", "I32");
+    }
+  }, 0.1);
+  alert("ガチャスキ固定ON");
+}
+
+function offGacha() {
+  clearInterval(intervalId);
+  alert("ガチャスキ固定OFF");
+}
+
+function EnemyBaseHealth(){
+h5gg.setValue(EnemyBaseHealtH,"0",'I32');
+alert("敵城完了")
+}
+
+function CallOffset() {
+
+
+
+//ベースアドレス
+baseAddr = Number(h5gg.getRangesList(0)[0].start);
+NowDate = (baseAddr + 0x15FA4D0);
+
+EnemyBaseHealtH = (baseAddr + 0x1634D44);
+
+//クリア回数
+clear = (NowDate + 0x628);
+clear2 = (clear + 0xD0);
+clear3 = (clear + 0x1A0);
+clear4 = (clear + 0x340);
+clear5 = (clear + 0x410);
+clear6 = (clear + 0x4E0);
+clear7 = (clear + 0x5B0);
+clear8 = (clear + 0x680);
+clear9 = (clear + 0x750);
+
+//お宝
+Treasure = (clear + 0x820)
+Treasure2 = (Treasure + 0xC8)
+Treasure3 = (Treasure + 0x190)
+Treasure4 = (Treasure + 0x320)
+Treasure5 = (Treasure + 0x3E8)
+Treasure6 = (Treasure + 0x4B0)
+Treasure7 = (Treasure + 0x578)
+Treasure8 = (Treasure + 0x640)
+Treasure9 = (Treasure + 0x708)
+
+//広告
+Addd = (NowDate + 0x331EB0);
+
+//味方城の体力
+MyBaseHealth = (NowDate + 0x34388);
+
+//敵消し
+Theenemy = (NowDate + 0x3F078);
+
+//解放関連
+//ステージ
+AllStage = (NowDate + 0x5FC);
+//全キャラ解放
+AllCharacter = (NowDate + 0x2C54);
+//レベマ
+AllCharacterLevel = (AllCharacter + 0x4);
+//第三
+SHapechange= (AllCharacter + 0x1654);
+
+//エラキャラ解放関連
+cet = (NowDate + 0x2110);
+error1 = (cet + 0x26C);
+error2 = (cet + 0x2D8);
+error3 = (cet + 0x474);
+error4 = (cet + 0x500);
+error5 = (cet + 0x54C);
+error6 = (cet + 0x584);
+error7 = (cet + 0x6C0);
+error8 = (cet + 0x6C4);
+error9 = (cet + 0x744);
+error10 = (cet + 0x7b0);
+error11 = (cet + 0x7C4);
+error12 = (cet + 0x7C8);
+error13 = (cet + 0x7CC);
+error14 = (cet + 0x7D0);
+error15 = (cet + 0xA84);
+
+//ユーザーステータス関連
+CatCan = (NowDate - 0xF8);
+XP = (NowDate + 0x28);
+NP = (NowDate + 0x30);
+//リーダー
+leadeR = (NowDate - 0x8898);
+
+//チケット関連
+CatTicket = (NowDate + 0x250C78);
+CatTicket1 = (CatTicket + 0x4);
+RareTicket = (NowDate + 0x250C80);
+RareTicket1 = (RareTicket + 0x4);
+PlatinumTicket = (NowDate - 0x81C0);
+PlatinumTicket1 = (PlatinumTicket + 0x4);
+LegendTicket = (NowDate -0x81B8);
+LegendTicket1 = (LegendTicket + 0x4);
+LegendFragment = (LegendTicket + 0x8);
+
+//アイテム関連
+Item = (NowDate + 0x4ED8);
+ItemSpeedUp = (Item + 0x0);
+ItemSpeedUp1= (Item + 0x4);
+ItemTreasureRadar = (Item + 0x8);
+ItemTreasureRadar1= (Item + 0xC);
+ItemCatBomb = (Item + 0x10);
+ItemCatBomb1= (Item + 0x14);
+ItemCatComputer = (Item + 0x18);
+ItemCatComputer1 = (Item + 0x1C);
+ItemXpBonus = (Item + 0x20);
+ItemXpBonus1 = (Item + 0x24);
+ItemSniper = (Item + 0x28);
+ItemSniper1 = (Item + 0x2C);
+
+
+//ネコビタ関連
+Bita = (NowDate + 0x32CA74);
+Bita1 = (Bita + 0x0);
+Bita11 = (Bita + 0x4);
+Bita2 = (Bita + 0x8);
+Bita22 = (Bita + 0xC);
+Bita3 = (Bita + 0x10);
+Bita33 = (Bita + 0x14);
+
+//建材関連
+Ken = (Bita + 0x18);
+KEN1 = (Ken + 0x0);
+KEN11 = (Ken + 0x4);
+KEN2 = (Ken + 0x8);
+KEN22 = (Ken + 0xC);
+KEN3 = (Ken + 0x10);
+KEN33 = (Ken + 0x14);
+KEN4 = (Ken + 0x18);
+KEN44 = (Ken + 0x1C);
+KEN5 = (Ken + 0x20);
+KEN55 = (Ken + 0x24);
+KEN6 = (Ken + 0x28);
+KEN66 = (Ken + 0x2C);
+KEN7 = (Ken + 0x30);
+KEN77 = (Ken + 0x34);
+KEN8 = (Ken + 0x38);
+KEN88 = (Ken + 0x3C);
+
+//キャッツアイ関連
+AiN = (Bita - 0x30);
+AIN1 = (AiN + 0x0);
+AIN11= (AiN+ 0x4);
+AIN2= (AiN + 0x8);
+AIN22= (AiN + 0xC);
+AIN3= (AiN + 0x10);
+AIN33= (AiN + 0x14);
+AIN4= (AiN + 0x18);
+AIN44= (AiN + 0x1C);
+AIN5= (AiN + 0x20);
+AIN55= (AiN + 0x24);
+AIN6= (AiN + 0x28);
+AIN66= (AiN + 0x2C);
+
+
+//施設の+関連
+Insti = (NowDate + 0x4E24);
+SA1 = (Insti + 0x0);
+SA11 = (Insti + 0x4);
+SA2 = (Insti + 0x10);
+SA22 = (Insti + 0x14);
+SA3 = (Insti + 0x18);
+SA33 = (Insti + 0x1C);
+SA4 = (Insti + 0x20);
+SA44 = (Insti + 0x24);
+SA5 = (Insti + 0x28);
+SA55 = (Insti + 0x2C);
+SA6 = (Insti + 0x30);
+SA66 = (Insti + 0x34);
+SA7 = (Insti + 0x38);
+SA77 = (Insti + 0x3C);
+SA8 = (Insti + 0x40);
+SA88 = (Insti + 0x44);
+SA9 = (Insti + 0x48);
+SA99 = (Insti + 0x4C);
+SA10 = (Insti + 0x50);
+SA110 = (Insti + 0x54);
+
+//ガマトト関連
+Gamatoto = (NowDate + 0x3145D0);
+
+//ゴールド
+Gold = (NowDate -0x8834)
+
+//レジェンドステージ
+LegendstagE = (NowDate + 0x260988);
+StagE1 = (LegendstagE + 0x0);
+StagE2 = (LegendstagE + 0x4);
+StagE3 = (LegendstagE + 0x8);
+StagE4 = (LegendstagE + 0xC);
+StagE5 = (LegendstagE + 0x10);
+StagE6 = (LegendstagE + 0x14);
+StagE7 = (LegendstagE + 0x18);
+StagE8 = (LegendstagE + 0x1C);
+StagE9 = (LegendstagE + 0x20);
+StagE10 = (LegendstagE + 0x24);
+StagE11 = (LegendstagE + 0x28);
+StagE12 = (LegendstagE + 0x2C);
+StagE13 = (LegendstagE + 0x30);
+StagE14 = (LegendstagE + 0x34);
+StagE15 = (LegendstagE + 0x38);
+StagE16 = (LegendstagE + 0x3C);
+StagE17 = (LegendstagE + 0x40);
+StagE18 = (LegendstagE + 0x44);
+StagE19 = (LegendstagE + 0x48);
+StagE20 = (LegendstagE + 0x4C);
+StagE21 = (LegendstagE + 0x50);
+StagE22 = (LegendstagE + 0x54);
+StagE23 = (LegendstagE + 0x58);
+StagE24 = (LegendstagE + 0x5C);
+StagE25 = (LegendstagE + 0x60);
+StagE26 = (LegendstagE + 0x64);
+StagE27 = (LegendstagE + 0x68);
+StagE28 = (LegendstagE + 0x6C);
+StagE29 = (LegendstagE + 0x70);
+StagE30 = (LegendstagE + 0x74);
+StagE31 = (LegendstagE + 0x78);
+StagE32 = (LegendstagE + 0x7C);
+StagE33 = (LegendstagE + 0x80);
+StagE34 = (LegendstagE + 0x84);
+StagE35 = (LegendstagE + 0x88);
+StagE36 = (LegendstagE + 0x8C);
+StagE37 = (LegendstagE + 0x90);
+StagE38 = (LegendstagE + 0x94);
+StagE39 = (LegendstagE + 0x98);
+StagE40 = (LegendstagE + 0x9C);
+StagE41 = (LegendstagE + 0xA0);
+StagE42 = (LegendstagE + 0xA4);
+StagE43 = (LegendstagE + 0xA8);
+StagE44 = (LegendstagE + 0xAC);
+StagE45 = (LegendstagE + 0xB0);
+StagE46 = (LegendstagE + 0xB4);
+StagE47 = (LegendstagE + 0xB8);
+StagE48 = (LegendstagE + 0xBC);
+StagE49 = (LegendstagE + 0xC0);
+}
+
+
+setButtonImage("https://media.discordapp.net/attachments/1147748848752676917/1147804175850283078/IMG_1896.jpg");
+
+function Debug(){
+ alert(h5gg.getRangesList(0)[0].start); //RAMの始まりのアドレス
+}
+
+</script>
+
+</body>
+</html>
